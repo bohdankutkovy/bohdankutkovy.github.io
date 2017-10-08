@@ -1,5 +1,11 @@
-class EmailGeneratorsController < Sinatra::Base
+class EmailGenerator < Sinatra::Base
+  set :haml, format: :html5
+
   get "/" do
+    haml :index
+  end
+
+  post "/emails" do
     login_generator = GeneratorType.build(:login, 'bohdan', 'kutkovy')
     logins = login_generator.generate
 
@@ -10,6 +16,7 @@ class EmailGeneratorsController < Sinatra::Base
     emails = email_generator.generate
     emails
   end
+
 end
 
 

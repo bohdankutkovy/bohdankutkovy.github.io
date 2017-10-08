@@ -11,5 +11,5 @@ Dir["./classes/*.rb"].each {|file| require file }
 
 Bundler.require
 
-require './controllers/email_generators_controller'
-run EmailGeneratorsController
+require './email_generator'
+run EmailGenerator
