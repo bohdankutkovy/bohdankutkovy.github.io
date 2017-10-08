@@ -1,7 +1,3 @@
-require_relative 'login'
-require_relative 'domain'
-require_relative 'email'
-
 class GeneratorType
   def self.build(type, *args)
     case type

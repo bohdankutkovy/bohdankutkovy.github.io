@@ -1,6 +1,3 @@
-require 'singleton'
-require 'yaml'
-
 class DomainZones
   include Singleton
 

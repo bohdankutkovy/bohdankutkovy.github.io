@@ -1,5 +1,3 @@
-require_relative 'generator'
-
 class Login < Generator
   SYMBOLS = %W[. _ - # #{""}].freeze
   attr_reader :fn, :ln

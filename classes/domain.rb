@@ -1,11 +1,3 @@
-# require 'resolv'
-require 'rubygems'
-require 'net/dns'
-require 'thread'
-
-require_relative 'generator'
-require_relative 'domain_zones'
-
 class Domain < Generator
   attr_reader :dm
   THREAD_COUNT = 16
@@ -36,10 +28,12 @@ class Domain < Generator
   private
 
   def get_full_domains
+    # get domains consisted of domain and domain_zone
     @domain_zones.map{ |dz| @dm + dz }
   end
 
   def is_dm_available?(domain)
+    # check if domain is available
     Net::DNS::Resolver.start(domain, Net::DNS::MX).answer.size > 0
   end
 end
