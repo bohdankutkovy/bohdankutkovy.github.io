@@ -1,6 +1,5 @@
-require 'sinatra'
+# require 'sinatra'
 require_relative 'classes/generator_factory'
 
-get '/' do
-  'Hello world!'
-end
+login_generator = GeneratorFactory.build(:login, 'bohdan', 'kutkovy')
+logins = login_generator.generate
