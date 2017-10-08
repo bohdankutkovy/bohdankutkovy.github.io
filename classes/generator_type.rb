@@ -1,13 +1,16 @@
 require_relative 'login'
 require_relative 'domain'
+require_relative 'email'
 
-class GeneratorFactory
+class GeneratorType
   def self.build(type, *args)
     case type
     when :login
       Login.new(*args)
     when :domain
       Domain.new(*args)
+    when :email
+      Email.new(*args)
     end
   end
 end
