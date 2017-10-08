@@ -1,0 +1,9 @@
+.modal.fade#emails_modal
+  .modal-dialog{:role => "document"}
+    .modal-content
+      .modal-header
+        %h5.modal-title Permutated emails
+      .modal-body
+        %textarea#emails_textarea.form-control{:rows => "10"}
+      .modal-footer
+        %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"} Close

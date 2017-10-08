@@ -1,4 +1,4 @@
-class Email < Generator
+class PermutatedEmail < Generator
 
   def initialize(logins, domains)
     @logins = logins

@@ -6,15 +6,19 @@ class EmailGenerator < Sinatra::Base
   end
 
   post "/emails" do
-    login_generator = GeneratorType.build(:login, 'bohdan', 'kutkovy')
-    logins = login_generator.generate
+    content_type :json
+    if !params[:firstname].empty? && !params[:lastname].empty? && !params[:domain].empty?
+      login_generator = GeneratorType.build(:login, params[:firstname], params[:lastname])
+      logins = login_generator.generate
 
-    domain_generator = GeneratorType.build(:domain, 'ralabs')
-    domains = domain_generator.generate
+      domain_generator = GeneratorType.build(:domain, params[:domain])
+      domains = domain_generator.generate
 
-    email_generator = GeneratorType.build(:email, logins, domains)
-    emails = email_generator.generate
-    emails
+      email_generator = GeneratorType.build(:email, logins, domains)
+      emails = email_generator.generate
+      {emails: emails.join("\n")}.to_json
+    end
+
   end
 
 end

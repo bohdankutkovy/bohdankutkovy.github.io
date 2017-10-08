@@ -3,25 +3,32 @@
   %head
     %title Email Generator
     %meta{content: "width=device-width, initial-scale=1.0", name: "viewport"}/
-    %link{href: "/vendor/bootstrap/css/bootstrap.min.css", rel: "stylesheet"}/
-    %script{src: "/vendor/jquery-1.9.1.min.js"}
-    %script{src: "/vendor/bootstrap/js/bootstrap.min.js"}
+    %link{:href => "//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css", :rel => "stylesheet"}/
+    / jQuery library
+    %script{:src => "//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"}
+    / Bootstrap JS
+    %script{:src => "//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"}
     %script{src: "/index.js"}
 
   %body
+    = haml(:'modals/emails_modal')
+    = haml(:'modals/loading_modal')
+
     .container
-      %form#permutator
+      %form#permutator_form
         .form-group
           %label{for: "firstname"} Firstname:
-          %input#firstname.form-control{type: "text", required: true, placeholder: "Enter firstname"}/
+          %input#firstname.form-control{ name: 'firstname', type: "text", required: true, placeholder: "Enter firstname"}/
         .form-group
           %label{for: "lastname"} Lastname:
-          %input#lastname.form-control{type: "text", required: true, placeholder: "Enter lastname"}/
+          %input#lastname.form-control{name: 'lastname', type: "text", required: true, placeholder: "Enter lastname"}/
         .form-group
           %label{for: "domain"} Company:
-          %input#domain.form-control{type: "text", required: true, placeholder: "Enter Company"}/
+          %input#domain.form-control{name: 'domain',type: "text", required: true, placeholder: "Enter Company"}/
 
         %button.btn.btn-default{:type => "submit"} Submit
+
+
 
 
 

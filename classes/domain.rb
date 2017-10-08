@@ -3,7 +3,7 @@ class Domain < Generator
   THREAD_COUNT = 16
 
   def initialize(dm)
-    @dm = dm
+    @dm = dm.downcase
     @domain_zones = DomainZones.get
   end
 
@@ -15,7 +15,7 @@ class Domain < Generator
     THREAD_COUNT.times.map {
       Thread.new(input_domains, output_domains) do |input_domains, output_domains|
         while domain = mutex.synchronize { input_domains.pop }
-          if is_dm_available?(domain)
+          if !is_dm_available?(domain)
             mutex.synchronize { output_domains << domain }
           end
         end
@@ -34,6 +34,10 @@ class Domain < Generator
 
   def is_dm_available?(domain)
     # check if domain is available
-    Net::DNS::Resolver.start(domain, Net::DNS::MX).answer.size > 0
+    mxs = Resolv::DNS.open do |dns|
+      ress = dns.getresources(domain, Resolv::DNS::Resource::IN::MX)
+      ress.map { |r| [ r.exchange.to_s ] }
+    end
+    mxs.empty?
   end
 end

@@ -1,11 +1,12 @@
 require 'rubygems'
 require 'bundler'
 
-require 'net/dns'
 require 'thread'
 
 require 'singleton'
 require 'yaml'
+
+require 'resolv'
 
 Dir["./classes/*.rb"].each {|file| require file }
 

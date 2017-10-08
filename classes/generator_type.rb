@@ -6,7 +6,7 @@ class GeneratorType
     when :domain
       Domain.new(*args)
     when :email
-      Email.new(*args)
+      PermutatedEmail.new(*args)
     end
   end
 end
