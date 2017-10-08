@@ -12,11 +12,17 @@ $(document).ready(function () {
             success: function(data)
             {
                 $('#loading_modal').modal('hide');
-                setTimeout(function () {
-                    $('#emails_textarea').val(data.emails);
-                    $('#emails_modal').modal('show');
-                }, 1000)
 
+                console.log(data);
+
+                if(data.emails !== undefined) {
+                    setTimeout(function () {
+                        $('#emails_textarea').val(data.emails);
+                        $('#emails_modal').modal('show');
+                    }, 1000)
+                } else {
+                    alert(data.error);
+                }
             }
         });
     });
