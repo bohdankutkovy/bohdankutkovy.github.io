@@ -16,8 +16,8 @@ $(document).ready(function () {
                 console.log(data);
 
                 if(data.emails !== undefined) {
+                    $('#emails_textarea').val(data.emails);
                     setTimeout(function () {
-                        $('#emails_textarea').val(data.emails);
                         $('#emails_modal').modal('show');
                     }, 1000)
                 } else {
