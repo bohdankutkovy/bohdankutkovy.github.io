@@ -6,9 +6,9 @@ class Login < Generator
 
   # receives firstname and lastname
   def initialize(fn, ln)
-    @fn, @ln = fn, ln
-    @fn_parts = get_string_parts(fn)
-    @ln_parts = get_string_parts(ln)
+    @fn, @ln = fn.downcase, ln.downcase
+    @fn_parts = get_string_parts(@fn)
+    @ln_parts = get_string_parts(@ln)
   end
 
   def generate
