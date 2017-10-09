@@ -11,5 +11,9 @@ and
 ```
 $ rackup
 ```
+After server startup visit:
+```
+localhost:9292
+```
 
 That's it.
