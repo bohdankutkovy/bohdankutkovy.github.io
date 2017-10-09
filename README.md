@@ -5,11 +5,11 @@ This application is built using ruby language and sinatra lightweight web framew
 ## Getting started
 To start using this application you need to execute:
 ```
-bundle
+$ bundle
 ```
 and
 ```
-rackup
+$ rackup
 ```
 
 That's it.
